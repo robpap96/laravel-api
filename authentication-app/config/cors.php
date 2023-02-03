@@ -18,7 +18,7 @@ return [
     'paths' => ['api/*', 'sanctum/csrf-cookie'],
 
     'allowed_methods' => ['*'],
-
+//[env('APP_FRONTEND_URL', 'http://127.0.0.1:5174')]
     'allowed_origins' => ['*'],
 
     'allowed_origins_patterns' => [],

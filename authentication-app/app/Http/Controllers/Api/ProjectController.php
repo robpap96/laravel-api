@@ -13,4 +13,18 @@ class ProjectController extends Controller
 
         return $projects;
     }
+
+    public function show($slug){
+        
+        try {
+            $project = Project::where('slug', $slug)->with('type')->firstOrFail();
+            return $project;  
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            return response([
+                'error' => '404 Project Not Found',
+            ], 404);
+        }
+
+        return $project;
+    }
 }

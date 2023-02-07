@@ -32,6 +32,8 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::resource('types', TypeController::class)->parameters(['types'=>'type:slug']);
     Route::resource('technologies', TechnologyController::class)->parameters(['technologies'=>'technology:slug']);
 
+    Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
+
 });
 
 // 🛡️ Tutte le rotte di autenticazione (registrazione, login ecc...)

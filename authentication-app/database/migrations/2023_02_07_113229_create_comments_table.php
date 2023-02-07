@@ -15,8 +15,7 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->string('namesender', 100);
-            $table->string('recipient', 100);
+            $table->string('name', 100);
             $table->text('content');
             $table->foreignId('project_id')->constrained()->onDelete('cascade');
             $table->timestamps();

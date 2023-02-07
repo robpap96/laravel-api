@@ -26,6 +26,28 @@
                 @endif
             </div>
         </div>
+        <div class="mt-4">
+            <h3>Commenti</h3>
+            @if($project->comments->isNotEmpty())
+                <ul>
+                    @foreach ($project->comments as $comment)
+                    <li>
+                        <h4>{{$comment->name}}</h4>
+                        <p>
+                            {{$comment->content}}
+                        </p>
+                        <form action="{{ route('admin.comments.destroy', $comment->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Elimina Commento</button>    
+                        </form>
+                    </li>
+                    @endforeach
+                </ul>
+            @else
+                <p>Non sono presenti commenti</p>
+            @endif
         </div>
     </div>
+
 @endsection
